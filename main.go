@@ -7,6 +7,25 @@ import (
 	"time"
 )
 
+const (
+	/*
+		c1 = iota
+		c2 = iota
+		c3 = iota
+	*/
+
+	c1 = iota
+	c2 //省略可能
+	c3
+)
+
+const (
+	_      = iota
+	KB int = 1 << (10 * iota)
+	MB
+	GB
+)
+
 func main() {
 	//time
 	/*
@@ -73,4 +92,9 @@ func main() {
 	fmt.Println(i, s, p)
 	sort.Slice(p, func(i, j int) bool { return p[i].Age < p[j].Age })
 	fmt.Println(i, s, p)
+
+	//iota
+	fmt.Println("---iota---")
+	fmt.Println(c1, c2, c3)
+	fmt.Println(KB, MB, GB)
 }
