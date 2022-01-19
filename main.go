@@ -2,6 +2,7 @@ package main
 
 import (
 	"fmt"
+	"regexp"
 	"time"
 )
 
@@ -28,8 +29,26 @@ func main() {
 	   	StampNano  = "Jan _2 15:04:05.000000000"
 	   )
 	*/
+	fmt.Println("---time---")
 	t := time.Now()
 	fmt.Println(t)
 	fmt.Println(t.Format(time.RFC3339))
 	fmt.Println(t.Year(), t.Month(), t.Day(), t.Hour(), t.Minute(), t.Second())
+
+	//regex
+	fmt.Println("---regex---")
+	match, _ := regexp.MatchString("a([a-z]+)e", "apple")
+	fmt.Println(match)
+	match2, _ := regexp.MatchString("a([a-z]+)e", "app0le")
+	fmt.Println(match2)
+
+	r := regexp.MustCompile("a([a-z]+)e")
+	ms := r.MatchString("apple")
+	fmt.Println(ms)
+
+	r2 := regexp.MustCompile("^/(view|edit|save)/([a-zA-Z0-9]+)$")
+	fs := r2.FindString("/view/test")
+	fmt.Println(fs)
+	fss := r2.FindStringSubmatch("/view/test")
+	fmt.Println(fss, fss[0], fss[1], fss[2])
 }
